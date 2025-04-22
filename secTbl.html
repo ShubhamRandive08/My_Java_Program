@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Custom Table as PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.11/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<h1>Custom Table Data</h1>
+<button id="downloadBtn">Download as PDF</button>
+
+<script>
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+        // Create a new jsPDF instance
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Define the columns and data for the table
+        const columns = [
+            { header: 'Name', dataKey: 'name' },
+            { header: 'Age', dataKey: 'age' },
+            { header: 'Email', dataKey: 'email' }
+        ];
+
+        const data = [
+            { name: 'John Doe', age: 30, email: 'john@example.com' },
+            { name: 'Jane Smith', age: 25, email: 'jane@example.com' },
+            { name: 'Sam Brown', age: 35, email: 'sam@example.com' }
+        ];
+
+        // Generate a PDF table
+        doc.autoTable({
+            columns: columns,
+            body: data,
+            startY: 20, // Position the table a bit lower on the page
+            theme: 'grid' // You can change the theme to 'plain', 'striped', etc.
+        });
+
+        // Save the PDF
+        doc.save('custom-table-data.pdf');
+    });
+</script>
+
+</body>
+</html>

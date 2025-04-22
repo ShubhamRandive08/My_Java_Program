@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download PDF Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.11/jspdf.plugin.autotable.min.js"></script>
+
+</head>
+<body>
+    <div id="content">
+        <h1>Hello, World!</h1>
+        <p>This is an example of converting HTML to a PDF document.</p>
+    </div>
+    <button onclick="downLoad()">Download PDF</button>
+
+    <script>
+        function downLoad() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Get the content of the div
+            const content = document.getElementById('content').innerHTML;
+
+            // Add the content to the PDF
+            doc.text(content, 10, 10);
+            doc.au
+
+            // Save the PDF
+            doc.save('studentAttData.pdf');
+        }
+    </script>
+</body>
+</html>
